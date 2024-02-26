@@ -14,6 +14,7 @@ public class Keyboard {
 		state.put(Key.Space, false);
 	}
 	
+	
 	public boolean isKeyDown(Key key) {
 		if(state.containsKey(key)) {
 			return state.get(key);
