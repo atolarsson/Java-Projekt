@@ -1,47 +1,71 @@
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
 
+public class Brick {
+    private int x;
+    private int y;
+    private int width;
+    private int height;
+    private int durability; // Number of hits needed to destroy the brick
+    private int score; // Score awarded when the brick is destroyed
+    private Color color;
+    private int scoreValue;
 
-
-
-public class Brick extends Sprite {
-    private int hitPoints; // Number of hits required to break the brick
-    private boolean isDestroyed; // Indicates if the brick is destroyed
-    private Color color; // The color of the brick, which could indicate its strength or special property
-
-    public Brick(int x, int y, int width, int height, Color color, int hitPoints) {
-        super(x, y, width, height);
+    public Brick(int x, int y, int width, int height, Color color, int durability, int scoreValue) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.durability = durability;
+        this.scoreValue = scoreValue;
         this.color = color;
-        this.hitPoints = hitPoints;
-        this.isDestroyed = false;
+    }
+    public int getX() {
+        return x;
     }
 
-    public void hit() {
-        hitPoints--;
-        if (hitPoints <= 0) {
-            isDestroyed = true;
-            // Handle the brick destruction here (e.g., update score, generate power-up)
-        }
-        // Optional: Change color or appearance to indicate damage
+    public int getY() {
+        return y;
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public void draw(Graphics2D g) {
+        g.setColor(color);
+        g.fillRect(x, y, width, height);
+        g.setColor(Color.BLACK);
+        g.drawRect(x, y, width, height);
+    }
+
+    // Getter and setter methods omitted for brevity
+
+    // Method to check if the brick has been destroyed
     public boolean isDestroyed() {
-        return isDestroyed;
+        return durability <= 0;
     }
 
-    @Override
-    
-    public void draw(Graphics2D graphics) {
-        if (!isDestroyed) {
-            graphics.setColor(this.color); // Set the brick color
-            graphics.fillRect(getX(), getY(), getWidth(), getHeight()); // Draw the brick as a filled rectangle
-            // Optionally, add more graphics details like borders
-        }
+    // Method to handle the ball hitting the brick
+    public void hit() {
+        durability--; // Reduce durability
     }
 
-           
-        
-    
-
-   
+    // Method to get the score awarded when the brick is destroyed
+    public int getScoreValue() {
+        return scoreValue;
     }
-
+}
 
