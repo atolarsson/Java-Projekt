@@ -34,7 +34,7 @@ public class Game {
 	  // Ensure the bat starts within the visible area of the game board
 	     int batY = board.getHeight() - batHeight - 30; // Place the bat near the bottom of the board but within the visible area
 
-	     bat = new Bat(batX, batY, batWidth, batHeight, gameWidth);
+	     bat = new Bat(400, 500, batWidth, batHeight);
 	  
 	     
 	     
