@@ -24,6 +24,7 @@ public class GameBoard extends JComponent {
 		graphics.setColor(Color.black);
 		graphics.fillRect(0, 0, getWidth(), getHeight());
 		
+		
 		game.draw(graphics);
 	}
 	
